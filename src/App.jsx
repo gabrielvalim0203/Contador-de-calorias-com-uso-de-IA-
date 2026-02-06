@@ -24,7 +24,8 @@ function App() {
     setApiKey,
     selectedDate,
     setSelectedDate,
-    historyDays
+    historyDays,
+    completeDay
   } = useMeals();
 
   const [activeTab, setActiveTab] = useState('summary'); // summary, history, settings
@@ -65,6 +66,11 @@ function App() {
               total={totalCalories}
               goal={goal}
               onUpdateGoal={setGoal}
+              onCompleteDay={() => {
+                if (window.confirm(`Tem certeza que deseja fechar o dia?\n\nTotal consumido: ${totalCalories} kcal\n\nIsso irá salvar o histórico e iniciar um novo dia em branco.`)) {
+                  completeDay();
+                }
+              }}
             />
 
             <AIInput apiKey={apiKey} onAddMeals={handleAddMeal} />

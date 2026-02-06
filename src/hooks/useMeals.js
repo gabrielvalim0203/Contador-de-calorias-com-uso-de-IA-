@@ -104,6 +104,11 @@ export function useMeals() {
         setApiKey,
         selectedDate,
         setSelectedDate,
-        historyDays
+        historyDays,
+        completeDay: () => {
+            const nextDay = new Date(selectedDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            setSelectedDate(nextDay);
+        }
     };
 }

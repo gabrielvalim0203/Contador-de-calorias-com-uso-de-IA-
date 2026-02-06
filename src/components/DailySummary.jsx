@@ -1,7 +1,7 @@
 import { cn } from '../lib/utils';
 import { Target } from 'lucide-react';
 
-export function DailySummary({ total, goal, onUpdateGoal }) {
+export function DailySummary({ total, goal, onUpdateGoal, onCompleteDay }) {
     const percentage = Math.min(100, Math.round((total / goal) * 100));
     const isOver = total > goal;
 
@@ -44,6 +44,13 @@ export function DailySummary({ total, goal, onUpdateGoal }) {
                 <span>0%</span>
                 <span>{percentage}% da meta</span>
             </div>
+
+            <button
+                onClick={onCompleteDay}
+                className="mt-6 w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-3 rounded-xl transition-all flex items-center justify-center gap-2 border border-white/10"
+            >
+                <span>✅</span> Concluir Dia
+            </button>
         </div>
     );
 }
