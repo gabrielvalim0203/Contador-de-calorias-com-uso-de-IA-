@@ -23,7 +23,7 @@ export function useMeals() {
     });
 
     const [apiKey, setApiKey] = useState(() => {
-        return localStorage.getItem(STORAGE_KEY_API_KEY) || '';
+        return localStorage.getItem(STORAGE_KEY_API_KEY) || import.meta.env.VITE_GEMINI_API_KEY || '';
     });
 
     // Default to today
